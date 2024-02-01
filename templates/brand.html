@@ -1,0 +1,135 @@
+{% include 'adminhead.html' %}
+<br>
+<br>
+<center><b>BRAND</b></center>
+<br><br>
+<form action="/brandaction/" onsubmit="return check()">
+<center>
+<table>
+<!--<tr>
+<th>Brand id:</th>
+<td><input type="text" id="brand" name="t1"></td>
+</tr>-->
+<tr></tr>
+<tr>
+<th>Brand Name:</th>
+<td><input type="text" id="bname" name="t2" required/></td>
+</tr>
+<tr><td><br></td></tr>
+<tr>
+<th>Description:</th>
+<td><textarea name="t3" id="bdes" required="yes"/></textarea></td>
+</tr>
+</table>
+<br><br>
+<center><input type="submit" name="t4" value="ADD"></center>
+</center>
+</form>
+<br>
+<center>
+<table border="1">
+<tr>
+<!--<th>brand_id</th>-->
+<th>brand_name</th>
+<th>brand_description</th>
+</tr>
+{% for i in list %}
+<tr>
+<!--<td>{{i.bcod}}</td>-->
+<td>{{i.bname}}</td>
+<td>{{i.descp}}</td>
+<td><a href="/delbrnd?n={{i.bcode}}">delete</a></td>
+</tr>
+{% endfor %}
+
+</table>
+</center>
+</body>
+</html>
+<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+<!-- js -->
+<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+<script src="/static/js/modernizr.custom.js"></script>
+	<!-- Custom-JavaScript-File-Links --> 
+	<!-- cart-js -->
+	<script src="/static/js/minicart.min.js"></script>
+<script>
+	// Mini Cart
+	paypal.minicart.render({
+		action: '#'
+	});
+
+	if (~window.location.search.indexOf('reset=true')) {
+		paypal.minicart.reset();
+	}
+</script>
+
+	<!-- //cart-js --> 
+<!-- script for responsive tabs -->						
+<script src="js/easy-responsive-tabs.js"></script>
+<script>
+	$(document).ready(function () {
+	$('#horizontalTab').easyResponsiveTabs({
+	type: 'default', //Types: default, vertical, accordion           
+	width: 'auto', //auto or any width like 600px
+	fit: true,   // 100% fit in a container
+	closed: 'accordion', // Start closed if in accordion view
+	activate: function(event) { // Callback function if tab is switched
+	var $tab = $(this);
+	var $info = $('#tabInfo');
+	var $name = $('span', $info);
+	$name.text($tab.text());
+	$info.show();
+	}
+	});
+	$('#verticalTab').easyResponsiveTabs({
+	type: 'vertical',
+	width: 'auto',
+	fit: true
+	});
+	});
+</script>
+<!-- //script for responsive tabs -->		
+<!-- stats -->
+	<script src="/static/js/jquery.waypoints.min.js"></script>
+	<script src="/static/js/jquery.countup.js"></script>
+	<script>
+		$('.counter').countUp();
+	</script>
+<!-- //stats -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="/static/js/move-top.js"></script>
+<script type="text/javascript" src="/static/js/jquery.easing.min.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+
+
+<!-- for bootstrap working -->
+<script type="text/javascript" src="/static/js/bootstrap.js"></script>
+</body>
+</html>

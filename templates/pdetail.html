@@ -1,0 +1,77 @@
+{% include 'userhead.html' %}
+<br>
+<br>
+ <div class="about">
+                <div class="container">
+							{% for i in list2 %}
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6">
+                            <div class="about-img">
+                                <img src="{{ MEDIA_URL }}{{i.p_image}}" alt="Image" style="height:300px;">
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-6">
+                           
+							
+								<address>
+												<strong>product Code:</strong> <span>{{i.pcode}}</span><br>
+									<strong>Product Name:</strong> <span>{{i.pname}}</span><br>
+									<strong>Brand:</strong> <span>{{i.bcode}}</span><br>
+									<strong>Category:</strong> <span>{{i.ccode}}</span><br>
+										<strong>SubCategory:</strong> <span>{{i.sccode}}</span><br>
+					<strong>Size:</strong> <span>{{i.size}}</span><br>
+									<strong>Availability:</strong> 
+												<span> 
+												{% ifequal i.qty '0' %}  <label style="color:red;"><b>"Out Of Stock"</b></label>  {% endifequal %}
+												{% ifnotequal i.qty '0' %}{{i.qty}}{% endifnotequal %} </span><br>							
+								</address>									
+								<h4><strong>Price: {{i.mrp}}/-</strong></h4>
+							
+							<div class="span5">
+							{% ifnotequal i.qty '0' %}
+								<form class="form-inline" action="/cart/">
+									<input type="hidden" name="bi" value="{{i.pcode}}"/>
+									<p>&nbsp;</p>
+									<p>&nbsp;</p>
+									<label>Qty:</label>
+									<input type="number" name="qty" class="span1" min="1" max="{{i.qty}}" required >&nbsp;&nbsp;&nbsp;
+									
+												
+									<button class="btn" type="submit" style="background-color:black;color:white;">Add to cart</button>
+												
+									
+												
+								</form>
+								{% endifnotequal %}
+							</div>							
+					</div>
+					</div>
+						
+						<div class="row">
+							<div class="span9">
+							<br/>
+								<ul class="nav nav-tabs" id="myTab">
+									<li class="active"><a href="#home"><b>Description</b></a></li>
+									<li></li>
+								</ul>							 
+								<div class="tab-content">
+									<div class="tab-pane active" id="home">{{i.descp}}</div>
+								
+								</div>							
+							</div>						
+							<div class="span9">	
+								<br>
+							
+							</div>
+						</div>
+                               
+                            </div>
+                        </div>
+                    </div>
+					{% endfor %}
+                </div>
+            </div>
+
+
+
+			

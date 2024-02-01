@@ -1,0 +1,33 @@
+<html>
+<body>
+<center><table>
+<tr>
+<!--<th>staff_id</th>-->
+<th>Name</th>
+<th>House name</th>
+<th>Street</th>
+<th>City</th>
+<th>District</th>
+<th>Pincode</th>
+<th>State</th>
+<th>Phone no:</th>
+<th>Email</th>
+</tr>
+{% for i in list %}
+<tr>
+<td>{{i.staff_id}}</td>
+<td>{{i.sname}}</td>
+<td>{{i.shname}}</td>
+<td>{{i.sstreet}}</td>
+<td>{{i.scity}}</td>
+<td>{{i.sdist}}</td>
+<td>{{i.spin}}</td>
+<td>{{i.sstate}}</td>
+<td>{{i.sphn}}</td>
+<td>{{i.sem}}</td>
+</tr>
+{% endfor %}
+
+</table></center>
+</body>
+</html>

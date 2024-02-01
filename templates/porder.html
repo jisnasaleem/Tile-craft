@@ -1,0 +1,178 @@
+
+
+{% include 'adminhead.html' %}
+<div class="container-fluid">
+
+                       
+	 <div class="hero row align-items">
+            <div class="col-md-12">
+			
+				<br>
+				<br>
+				
+		
+					
+						<h1><b>Pending Orders</b></h1>
+						
+				<br>
+				<br>
+    <div class="contact-box-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <div class="contact-form-right">
+                        <h2></h2>
+			
+	
+			
+												<table border="1" style="width:100%;text-align:center">
+
+																	<thead>
+																		<tr style="background-color:black;color:white;height:50px">
+																			<th>Image</th>
+																			<th>Product Name</th>
+																			<th>Quantity</th>
+																			<th>Customer Name</th>
+																			<th>Customer  No</th>
+																			<th>Customer Address</th>
+																			<th>Assign Staff</th>
+																			<th>Action</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+												{% for i in order %}
+													 <form action="/assign/">
+																		<tr>
+																			
+																			<td><img alt="" src=" {{ MEDIA_URL }}{{i.p_image}}" width="150px" height="150px"></td>
+																			<td> {{i.pname}}</td>
+																			<td> {{i.qty}}</td>
+																			<td> {{i.cname}}</td>
+																			<td> {{i.cphno}}</td>
+																			<td> {{i.chouse}},{{i.ccity}},{{i.cdist}},{{i.cpin}}</td>
+																			<td><select name="st">
+																			{% for j in staff %}
+
+										<option value="{{j.staffid}}">{{j.sname}}    </option>
+
+										{% endfor %}
+																			</select></td><input type="hidden" name="oid" value="{{i.oid}}"/>
+																			<td><input type="submit" value="Assign"/></td>
+												 </tr>	
+										</form>		 
+												{% endfor %}
+																</tbody>
+																</table>
+				 
+						 </div>
+                </div>
+				
+            </div>
+        </div>
+    </div>
+    <!-- End Cart -->
+
+    <!-- Start Instagram Feed  -->
+     
+    <!-- End Instagram Feed  -->
+
+
+    <!-- Start Footer  -->
+    
+    <!-- End Footer  -->
+
+    <!-- Start copyright  -->
+   
+    <!-- End copyright  -->
+
+
+<!-- login -->
+		
+<!-- //login -->
+<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+<!-- js -->
+<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+<script src="/static/js/modernizr.custom.js"></script>
+	<!-- Custom-JavaScript-File-Links --> 
+	<!-- cart-js -->
+	<script src="/static/js/minicart.min.js"></script>
+<script>
+	// Mini Cart
+	paypal.minicart.render({
+		action: '#'
+	});
+
+	if (~window.location.search.indexOf('reset=true')) {
+		paypal.minicart.reset();
+	}
+</script>
+
+	<!-- //cart-js --> 
+<!-- script for responsive tabs -->						
+<script src="js/easy-responsive-tabs.js"></script>
+<script>
+	$(document).ready(function () {
+	$('#horizontalTab').easyResponsiveTabs({
+	type: 'default', //Types: default, vertical, accordion           
+	width: 'auto', //auto or any width like 600px
+	fit: true,   // 100% fit in a container
+	closed: 'accordion', // Start closed if in accordion view
+	activate: function(event) { // Callback function if tab is switched
+	var $tab = $(this);
+	var $info = $('#tabInfo');
+	var $name = $('span', $info);
+	$name.text($tab.text());
+	$info.show();
+	}
+	});
+	$('#verticalTab').easyResponsiveTabs({
+	type: 'vertical',
+	width: 'auto',
+	fit: true
+	});
+	});
+</script>
+<!-- //script for responsive tabs -->		
+<!-- stats -->
+	<script src="/static/js/jquery.waypoints.min.js"></script>
+	<script src="/static/js/jquery.countup.js"></script>
+	<script>
+		$('.counter').countUp();
+	</script>
+<!-- //stats -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="/static/js/move-top.js"></script>
+<script type="text/javascript" src="/static/js/jquery.easing.min.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+
+
+<!-- for bootstrap working -->
+<script type="text/javascript" src="/static/js/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+{% include 'userhead.html' %}
+
+<div class="container-fluid">
+
+                       
+	 <div class="hero row align-items">
+            <div class="col-md-12">
+			
+				<br>
+				<br>
+				
+		
+					
+						<h1><b>SHOPPING CART  </b></h1>
+						
+				<br>
+				<br>
+					
+
+<table class="table table-striped"
+{% if list2 %}
+                       
+	 <div class="hero row align-items-center">
+            <div class="col-md-12">
+
+<table class="table table-striped">
+							<thead>
+								<tr style="background-color:black;color:white;height:50px">
+									<th>Image</th>
+									<th>Product Name</th>
+									<th>Quantity</th>
+									<th>Unit Price</th>
+									<th>Total</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+							{% for i in list2 %}
+								<tr>
+									
+									<td><img alt="" src="{{ MEDIA_URL }}{{i.p_image}}" width="100px" height="100px"></td>
+									<td> {{i.pname}}</td>
+									<td> {{i.cqty}}</td>
+									<td>{{i.mrp}}</td>
+									<td> {{i.ttt}}</td>
+									<td><a href="/delcart?id={{i.cid}}" style="color:red"> Remove</a></td>
+		 </tr>			  
+		{% endfor %} 
+							</tbody>
+						</table>
+			</div>
+</div>			
+						<hr/>
+						<center><p class="buttons center">				
+							<form action="/buyaction/" onsubmit="return check();">
+							<table cellpadding="7px;">
+<tr>
+
+ <th>Card Number</th><td><input type="text" name="vnm" id="vnm" class="form-control"  required maxlength="12" /></td>
+
+ <th>CVV</th><td><input type="password" name="bnm" id="bnm" required maxlength="3" class="form-control"   /></td>
+</tr>
+<tr><td><br></td></tr>
+<tr>
+ <th>Expiry Date</th><td><input type="date" name="edate" id="edate" required min="{{date}}"  class="form-control"  /></td>
+
+ <th>Total Amount</th><td><input type="text" name="stnm" id="stnm" required value="{{total}}" class="form-control"   readonly /></td>
+</tr>
+<tr><td><br></td></tr>
+<tr><td colspan="4"><center><input type="submit" style="background-color:black;color:white;"  value="Pay & Confirm Order"/></center></td></tr>
+</table>
+
+</div>
+{% else %}
+<br><br>
+<center>
+<h1 style="color:red"><b>NO ITEMS IN THE CART </b></h1>
+</center>
+{% endif %}
+</div>
+
+
+		</div>
+</div>
+
+
+ <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        </div>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/lib/easing/easing.min.js"></script>
+        <script src="/static/lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="/static/lib/isotope/isotope.pkgd.min.js"></script>
+        <script src="/static/lib/lightbox/js/lightbox.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="/static/js/main.js"></script>
+    </body>
+</html>

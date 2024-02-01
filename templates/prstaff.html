@@ -1,0 +1,205 @@
+{% include 'adminhead.html' %}
+<br>
+
+<center><b>STAFF </b></center>
+<br><br>
+{% for i in list %}
+<form action="/updatesprofile/" onsubmit="return check();">
+<center>
+<table>
+<th align="justify">Name:</th>
+<td><input type="text" name="t1"  id="t1"  value="{{i.sname}}" required ></td>
+</tr>
+<tr><td><br></td></tr>
+<tr>
+<th align="justify">House Name:</th>
+<td><input type="text" name="t2"  id="t2" value="{{i.shname}}"required ></td>
+</tr>
+<tr><td><br></td></tr>
+<tr>
+<th align="justify">Street:</th>
+<td><input type="text" name="t3" value="{{i.sstreet}}" required ></td>
+</tr>
+<tr><td><br></td></tr>
+<tr>
+<th align="justify">City:</th>
+<td><input type="text" name="t4"  id="t4"  value="{{i.scity}}"required ></td>
+</tr>
+<tr><td><br></td></tr>
+<tr>
+<th align="justify">District:</th>
+<td><input type="text" name="t5" id="t5" value="{{i.sdist}}" required ></td>
+</tr>
+<tr><td><br></td></tr>
+<tr>
+<th align="justify">Pincode:</th>
+<td ><input type="text" name="t6" id="t6" maxlength="6" value="{{i.spin}}" required ></td>
+<tr><td><br></td></tr>
+
+<tr>
+<th align="justify">State:</th>
+<td><input type="text" name="t7"  value="{{i.sstate}}" required ></td>
+</tr>
+<tr><td><br></td></tr>
+<th align="justify">Phone No:</th>
+<td><input type="text" name="t8" id="t8" value="{{i.sphn}}" maxlength="10" required ></td>
+</tr>
+<tr><td><br></td></tr>
+<tr>
+<th align="justify">Email id:</th>
+<td><input type="email" name="t9" value="{{i.sem}}" required ></td>
+</tr>
+
+<tr><td><br></td></tr>
+<tr>
+<th align="justify">Password:</th>
+<td><input type="password" name="t10" id="t10"  required ></td>
+</tr>
+</table>
+<br><br>
+<center><input type="submit" name="t11" value="ADD"></center>
+</center>
+</form>
+{% endfor %}
+<br>
+<center>
+
+<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+<!-- js -->
+<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+<script src="/static/js/modernizr.custom.js"></script>
+	<!-- Custom-JavaScript-File-Links --> 
+	<!-- cart-js -->
+	<script src="/static/js/minicart.min.js"></script>
+<script>
+	// Mini Cart
+	paypal.minicart.render({
+		action: '#'
+	});
+
+	if (~window.location.search.indexOf('reset=true')) {
+		paypal.minicart.reset();
+	}
+</script>
+
+	<!-- //cart-js --> 
+<!-- script for responsive tabs -->						
+<script src="js/easy-responsive-tabs.js"></script>
+<script>
+	$(document).ready(function () {
+	$('#horizontalTab').easyResponsiveTabs({
+	type: 'default', //Types: default, vertical, accordion           
+	width: 'auto', //auto or any width like 600px
+	fit: true,   // 100% fit in a container
+	closed: 'accordion', // Start closed if in accordion view
+	activate: function(event) { // Callback function if tab is switched
+	var $tab = $(this);
+	var $info = $('#tabInfo');
+	var $name = $('span', $info);
+	$name.text($tab.text());
+	$info.show();
+	}
+	});
+	$('#verticalTab').easyResponsiveTabs({
+	type: 'vertical',
+	width: 'auto',
+	fit: true
+	});
+	});
+</script>
+<!-- //script for responsive tabs -->		
+<!-- stats -->
+	<script src="/static/js/jquery.waypoints.min.js"></script>
+	<script src="/static/js/jquery.countup.js"></script>
+	<script>
+		$('.counter').countUp();
+	</script>
+<!-- //stats -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="/static/js/move-top.js"></script>
+<script type="text/javascript" src="/static/js/jquery.easing.min.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+
+
+<!-- for bootstrap working -->
+<script type="text/javascript" src="/static/js/bootstrap.js"></script>
+</body>
+</html>
+
+</html>
+<script type="text/javascript">
+	var letters=/^[a-z A-Z]+$/;
+	var numbers=/^[0-9]+$/;
+    function check()
+    {
+	  
+	if(!document.getElementById("t1").value.match(letters))
+        {
+              
+            alert('Please input alphabet characters only,enter name');
+            return false;
+        }
+		
+	else if(!document.getElementById("t8").value.match(numbers))
+        {
+            alert('Please input numeric characters only,enter phone number');
+            return false;
+        }
+        else if(document.getElementById("t8").value.length<10)
+        {
+            alert('invalid Phone number,enter phone number');
+            return false;
+        }
+		
+    else if(!document.getElementById("t6").value.match(numbers))
+        {
+            alert('Please input numeric characters only,enter pin number');
+            return false;
+        }
+        else if(document.getElementById("t6").value.length<6)
+        {
+            alert('invalid pin number,enter pin number');
+            return false;
+        }
+     else if(document.getElementById("t10").value.length<8)
+        {
+            alert('Enter password with minimum length of 8 characters');
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+   
+</script>
+
+
+ 

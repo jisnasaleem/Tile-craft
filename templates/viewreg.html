@@ -1,0 +1,23 @@
+<html>
+<body>
+<center><table>
+<tr>
+<th>rid</th>
+<th>name</th>
+<th>address</th>
+<th>phno</th>
+<th>email</th>
+</tr>
+{% for i in list %}
+<tr>
+<td>{{i.rid}}</td>
+<td>{{i.name}}</td>
+<td>{{i.adr}}</td>
+<td>{{i.phn}}</td>
+<td>{{i.em}}</td>
+</tr>
+{% endfor %}
+
+</table></center>
+</body>
+</html>

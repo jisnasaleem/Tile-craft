@@ -1,0 +1,154 @@
+		{% include 'adminhead.html' %}
+<div class="container-fluid">
+
+                       
+	 <div class="hero row align-items">
+            <div class="col-md-12">
+			
+			<br><br>
+			
+		<h1><b>Orders  History</b></h1>
+						
+				<br>
+				<br>
+				<div class="row">
+				
+					<div class="span12">	
+						<center><form action="/orderreport/">
+				<input type="date" name="d1"/><input type="date" name="d2"/>
+				<input type="submit" value="search"/></form></center>
+			
+				<br><br>
+						
+						</div></div>
+						
+						<table border="1" style="width:100%;text-align:center">
+	<tr style="background-color:black;color:white;height:50px">
+									<th>Image</th>
+									<th>Order Date</th>
+									<th>Product Name</th>
+									<th>Quantity</th>
+									<th>Unit Price</th>
+									<th>Total</th>
+									<th>Staff Assigned</th>
+									<th>status</th>
+									<th>Customer Details</th>
+									
+								</tr>
+
+							<tbody>
+							{% for i in order %}
+								<tr>
+										<td><img alt="" src="{{ MEDIA_URL }}{{i.book_image}}" width="100px" height="100px"></td>
+									<td> {{i.odate}}</td>
+									<td> {{i.book_name}}</td>
+									<td> {{i.qty}}</td>
+									<td> {{i.book_price}}</td>
+									<td> {{i.total}}</td>
+									<td> {{i.staff_name}}</td>
+									<td> {{i.ostatus}}</td>
+								<td> {{i.cname}},<br/> 
+								  <hr/>
+								  {{i.cemail}}</td>
+									
+		 </tr>			  
+		{% endfor %}
+							</tbody>
+						</table>
+            </div>
+</div>
+
+
+
+<!-- login -->
+		
+<!-- //login -->
+<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+<!-- js -->
+<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+<script src="/static/js/modernizr.custom.js"></script>
+	<!-- Custom-JavaScript-File-Links --> 
+	<!-- cart-js -->
+	<script src="/static/js/minicart.min.js"></script>
+<script>
+	// Mini Cart
+	paypal.minicart.render({
+		action: '#'
+	});
+
+	if (~window.location.search.indexOf('reset=true')) {
+		paypal.minicart.reset();
+	}
+</script>
+
+	<!-- //cart-js --> 
+<!-- script for responsive tabs -->						
+<script src="js/easy-responsive-tabs.js"></script>
+<script>
+	$(document).ready(function () {
+	$('#horizontalTab').easyResponsiveTabs({
+	type: 'default', //Types: default, vertical, accordion           
+	width: 'auto', //auto or any width like 600px
+	fit: true,   // 100% fit in a container
+	closed: 'accordion', // Start closed if in accordion view
+	activate: function(event) { // Callback function if tab is switched
+	var $tab = $(this);
+	var $info = $('#tabInfo');
+	var $name = $('span', $info);
+	$name.text($tab.text());
+	$info.show();
+	}
+	});
+	$('#verticalTab').easyResponsiveTabs({
+	type: 'vertical',
+	width: 'auto',
+	fit: true
+	});
+	});
+</script>
+<!-- //script for responsive tabs -->		
+<!-- stats -->
+	<script src="/static/js/jquery.waypoints.min.js"></script>
+	<script src="/static/js/jquery.countup.js"></script>
+	<script>
+		$('.counter').countUp();
+	</script>
+<!-- //stats -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="/static/js/move-top.js"></script>
+<script type="text/javascript" src="/static/js/jquery.easing.min.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+<br><br>
+<center><button onclick="window.print()"> print</button></center>
+
+<!-- for bootstrap working -->
+<script type="text/javascript" src="/static/js/bootstrap.js"></script>
+</body>
+</html>
+

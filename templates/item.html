@@ -1,0 +1,204 @@
+{% include 'adminhead.html' %}
+<br>
+<br>
+
+<form action="/viewprod/">
+<button class="btn" type="submit" style="background-color:black;color:white;">View Products </button>
+</form>
+<br>
+<br>
+<center><b>ITEM</b></center>
+
+<form action="/itemaction/" method="post" enctype="multipart/form-data" onSubmit="return check()">{% csrf_token %}
+<center>
+<table>
+<!--<tr>
+<th>Item id:</th>
+<td><input type="text" name="t1"></td>
+</tr>-->
+<tr><td><br></td></tr>
+<th>Item:</th>
+<td><input type="text" name="iname" class="form-control"  required />
+</td></tr>
+<tr><td><br></td></tr>
+<tr>
+<th>Brand:</th>
+<td><select name="t3" id="bran" class="form-control" required >
+{% for i in list2 %}
+<option value="{{i.bcode}}">{{i.bname}}</option>
+{% endfor %}
+</select></td>
+</tr>
+<tr><td><br></td></tr>
+<tr>
+<th>Category:</th>
+<td>
+<select name="t4" id="cat" class="form-control" required >
+{% for i in list1 %}
+<option value="{{i.ccod}}">{{i.cname}}</option>
+{% endfor %}
+</select></td>
+</tr>
+<tr><td><br></td></tr>
+<tr>
+<th> sub Category :</th>
+<td>
+<select name="t5" id="subca" class="form-control" required >
+{% for i in list %}
+<option value="{{i.scode}}">{{i.sname}}</option>
+{% endfor %}
+</select></td>
+</tr>
+<tr><td><br></td></tr>
+<th>Description:</th>
+<td><textarea name="t6" class="form-control"  required ></textarea></td>
+</tr>
+<tr><td><br></td></tr>
+<th>Size:</th><td>
+<select name="size" id="size" class="form-control" required >
+
+<option value="2x2">2x2</option>
+<option value="3x2">3x2</option>
+</select></td>
+</tr>
+<tr><td><br></td></tr>
+<th>Amount:</th>
+<td><input type="number" name="t7"  class="form-control"  required ></td>
+</tr>
+<tr><td><br></td></tr>
+<tr>
+<th>Upload an image</th><td><input type="file"  class="form-control"  name="p_image" id="file" required /></td>
+			</tr>
+</table>
+<br><br>
+<center><input type="submit" name="t8" value="ADD"></center>
+</center>
+</form>
+<!--
+<h4 class="title"><span class="text"><strong>Details</strong> </span></h4>
+				<table border="1" style="width:100%;text-align:center">
+					<tr style="background-color:black;color:white;height:50px">
+			
+			
+				 <th>Product ID </th>
+				 <th>Product Name</th>
+				  <th>Category</th>
+					<th>Sub Category</th>
+					  <th>Brand</th>
+				 <th>Description</th>
+				  <th>Size</th>
+				 <th>MRP</th>
+				 <th>Quantity</th>
+				 <th>Action</th>
+				</tr>
+
+
+					 {% for j in list4 %}
+					 <tr>
+					<td><img src="{{ MEDIA_URL }}{{j.p_image}}" width="150" height="70px"><br>{{j.icode}}</td>
+				
+					<td>{{j.iname}}</td>
+							<td>{{j.ccode}}</td>
+								<td>{{j.scode}}</td>
+									<td>{{j.bcode}}</td>
+					
+					<td>{{j.desp}}</td>	
+					<td>{{j.size}}</td>	
+					<td>{{j.mrp}}</td>
+					<td>{{j.qty}}</td>	
+					<td><a style="color:red;" href="/delprod?n={{j.icode}}">Delete</a>|<a style="color:green;" href="/editprod?n={{j.icode}}">Edit</a></td>
+					</tr>
+				  {% endfor %}
+				
+
+				</table>-->
+				<br>
+<br>
+<br>
+<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+<!-- js -->
+<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+<script src="/static/js/modernizr.custom.js"></script>
+	<!-- Custom-JavaScript-File-Links --> 
+	<!-- cart-js -->
+	<script src="/static/js/minicart.min.js"></script>
+<script>
+	// Mini Cart
+	paypal.minicart.render({
+		action: '#'
+	});
+
+	if (~window.location.search.indexOf('reset=true')) {
+		paypal.minicart.reset();
+	}
+</script>
+
+	<!-- //cart-js --> 
+<!-- script for responsive tabs -->						
+<script src="js/easy-responsive-tabs.js"></script>
+<script>
+	$(document).ready(function () {
+	$('#horizontalTab').easyResponsiveTabs({
+	type: 'default', //Types: default, vertical, accordion           
+	width: 'auto', //auto or any width like 600px
+	fit: true,   // 100% fit in a container
+	closed: 'accordion', // Start closed if in accordion view
+	activate: function(event) { // Callback function if tab is switched
+	var $tab = $(this);
+	var $info = $('#tabInfo');
+	var $name = $('span', $info);
+	$name.text($tab.text());
+	$info.show();
+	}
+	});
+	$('#verticalTab').easyResponsiveTabs({
+	type: 'vertical',
+	width: 'auto',
+	fit: true
+	});
+	});
+</script>
+<!-- //script for responsive tabs -->		
+<!-- stats -->
+	<script src="/static/js/jquery.waypoints.min.js"></script>
+	<script src="/static/js/jquery.countup.js"></script>
+	<script>
+		$('.counter').countUp();
+	</script>
+<!-- //stats -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="/static/js/move-top.js"></script>
+<script type="text/javascript" src="/static/js/jquery.easing.min.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+
+
+<!-- for bootstrap working -->
+<script type="text/javascript" src="/static/js/bootstrap.js"></script>
+</body>
+</html>

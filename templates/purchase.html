@@ -1,0 +1,206 @@
+	
+{% ifequal utype 'admin' %}
+		{% include 'adminhead.html' %}	
+{% endifequal %}
+	
+{% ifequal utype 'staff' %}
+		{% include 'staffhead.html' %}	
+{% endifequal %}	
+
+<br>
+<br>
+<div class="contact-box-main">
+
+        <div class="container">
+
+            <div class="row">
+			
+                <div class="col-lg-5 col-sm-7">
+                    <div class="form-group" >
+                        
+				
+<form action="/purchaseaction/">
+                            <div class="row">
+                              
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+
+
+		
+				
+<form action="/purchaseaction/">
+                            
+
+<table cellpadding="5px;">
+<tr>
+ <th>vendor name</th><td><select name="dnm" required > 
+{% for i in list2 %}
+<option value="{{i.vid}}">{{i.cname}}</option>
+{% endfor  %}
+
+</select></td>
+</tr>
+<tr><td><br></td></tr>
+<tr>
+ <th>Date of purchase</th><td><input type="date" name="pdt" required /></td>
+</tr>
+<tr><td><br></td></tr>
+
+<th></th><td>  <input type="submit"  class="btn hvr-hover" value="ADD" style="background-color:grey;width: 140px;"/></td>
+</tr>
+</table>
+
+
+    </div>
+                                </div>
+								
+								
+                </form>                
+							
+
+  	
+                            </div>
+                      
+                    </div>
+                </div>
+				<div class="col-lg-7 col-sm-7">
+                           <div class="row">
+						   
+                                   <div class="col-md-12">
+                                    <div class="form-group">
+									</br>	
+
+				
+
+												
+						<h4 class="title"><span class="text"><strong>Details</strong> </span>
+						{% ifequal utype 'admin' %}
+<!--<a href="/purchasereport/" style="float:right"><button style="background-color:blue;color:white"> Reports</button></a>
+-->
+{% endifequal %}
+</h4>
+<table border="1" style="width:100%;text-align:center">
+<tr style="background-color:black;color:white;height:30px">
+ <th>Distributor</th>
+ <th>Date of Purchase</th>
+ <th>Total Amount</th>
+</tr>
+{% for j in list1 %}
+<tr>
+			    <td>{{j.dist_name}}</td>
+			    <td> {{j.pdate}} </td>
+				<td> {{j.tamt}}</td>
+				
+				<td><a style="color:red;" href="/pchild?pid={{j.pmid}}"><b>Add/View Purchased Items</b></a></td>
+			
+			</tr>
+	{% endfor  %}
+</table>
+
+					</div>
+                                </div>
+                            
+                            </div>
+							
+                </div>
+            </div>
+			  </form>
+        </div>
+    </div>
+	
+
+
+ 
+<!-- //footer -->
+
+<!-- login -->
+		
+<!-- //login -->
+<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+<!-- js -->
+<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+<script src="/static/js/modernizr.custom.js"></script>
+	<!-- Custom-JavaScript-File-Links --> 
+	<!-- cart-js -->
+	<script src="/static/js/minicart.min.js"></script>
+<script>
+	// Mini Cart
+	paypal.minicart.render({
+		action: '#'
+	});
+
+	if (~window.location.search.indexOf('reset=true')) {
+		paypal.minicart.reset();
+	}
+</script>
+
+	<!-- //cart-js --> 
+<!-- script for responsive tabs -->						
+<script src="js/easy-responsive-tabs.js"></script>
+<script>
+	$(document).ready(function () {
+	$('#horizontalTab').easyResponsiveTabs({
+	type: 'default', //Types: default, vertical, accordion           
+	width: 'auto', //auto or any width like 600px
+	fit: true,   // 100% fit in a container
+	closed: 'accordion', // Start closed if in accordion view
+	activate: function(event) { // Callback function if tab is switched
+	var $tab = $(this);
+	var $info = $('#tabInfo');
+	var $name = $('span', $info);
+	$name.text($tab.text());
+	$info.show();
+	}
+	});
+	$('#verticalTab').easyResponsiveTabs({
+	type: 'vertical',
+	width: 'auto',
+	fit: true
+	});
+	});
+</script>
+<!-- //script for responsive tabs -->		
+<!-- stats -->
+	<script src="/static/js/jquery.waypoints.min.js"></script>
+	<script src="/static/js/jquery.countup.js"></script>
+	<script>
+		$('.counter').countUp();
+	</script>
+<!-- //stats -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="/static/js/move-top.js"></script>
+<script type="text/javascript" src="/static/js/jquery.easing.min.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+
+
+<!-- for bootstrap working -->
+<script type="text/javascript" src="/static/js/bootstrap.js"></script>
+</body>
+</html>

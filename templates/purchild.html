@@ -1,0 +1,189 @@
+
+{% ifequal utype 'admin' %}
+		{% include 'adminhead.html' %}	
+{% endifequal %}
+	
+{% ifequal utype 'staff' %}
+		{% include 'staffhead.html' %}	
+{% endifequal %}		
+			<br>
+			<br>
+    <!-- End Top Search -->
+
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact-box-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <div class="contact-form-right">
+                        <h2>purchase  items</h2>
+<br>
+<br>
+<br>
+<form action="/purchildaction/">
+<table>
+<tr>
+ <th>Item Code</th>
+  
+  <th>Total Quantity</th>
+  <th>Unit Price</th>
+ 
+  <th></th>
+  </tr><tr><input type="hidden" name="t0" value="{{pmid}}" required />
+  <td><select name="bid" required >
+{% for i in list2 %}
+
+<option value="{{i.icode}}">{{i.iname}}({{i.icode}})</option>
+
+{% endfor  %}
+  </select></td>
+
+<td><input type="number" name="tqt" required /></td>
+
+ <td><input type="number" name="utpr" required /></td>
+
+
+
+<td><input type="submit" value="Add Next"/></td>
+</tr>
+</table>
+</form>
+<br/><br/>
+<table border="1" style="width:100%;text-align:center">
+<tr style="background-color:#b0b435;color:white;height:30px">
+ <th>Book id</th>
+ <th>Book Name</th>
+ <th>Total Quantity</th>
+ <th>Unit Price</th>
+ <th>Total Amount</th>
+</tr>
+{% for i in list1 %}
+			 <tr>
+			    <td> {{i.book_id}}</td>
+				  <td> {{i.book_name}}</td>
+			    <td>{{i.tqty}} </td>
+				<td> {{i.uprice}}</td>
+				<td> {{i.tamt}} </td>
+				<td><a href="/delpchild?id={{i.pchild_id}}">Delete</a></td>
+			</tr>
+	{% endfor  %}
+</table>
+	 </div>
+                </div>
+				<div class="col-lg-4 col-sm-12">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Cart -->
+
+    <!-- Start Instagram Feed  -->
+     
+    <!-- End Instagram Feed  -->
+
+
+    <!-- Start Footer  -->
+    
+    <!-- End Footer  -->
+
+    <!-- Start copyright  -->
+   
+    <!-- End copyright  -->
+ <a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+<!-- js -->
+<script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+<script src="/static/js/modernizr.custom.js"></script>
+	<!-- Custom-JavaScript-File-Links --> 
+	<!-- cart-js -->
+	<script src="/static/js/minicart.min.js"></script>
+<script>
+	// Mini Cart
+	paypal.minicart.render({
+		action: '#'
+	});
+
+	if (~window.location.search.indexOf('reset=true')) {
+		paypal.minicart.reset();
+	}
+</script>
+
+	<!-- //cart-js --> 
+<!-- script for responsive tabs -->						
+<script src="js/easy-responsive-tabs.js"></script>
+<script>
+	$(document).ready(function () {
+	$('#horizontalTab').easyResponsiveTabs({
+	type: 'default', //Types: default, vertical, accordion           
+	width: 'auto', //auto or any width like 600px
+	fit: true,   // 100% fit in a container
+	closed: 'accordion', // Start closed if in accordion view
+	activate: function(event) { // Callback function if tab is switched
+	var $tab = $(this);
+	var $info = $('#tabInfo');
+	var $name = $('span', $info);
+	$name.text($tab.text());
+	$info.show();
+	}
+	});
+	$('#verticalTab').easyResponsiveTabs({
+	type: 'vertical',
+	width: 'auto',
+	fit: true
+	});
+	});
+</script>
+<!-- //script for responsive tabs -->		
+<!-- stats -->
+	<script src="/static/js/jquery.waypoints.min.js"></script>
+	<script src="/static/js/jquery.countup.js"></script>
+	<script>
+		$('.counter').countUp();
+	</script>
+<!-- //stats -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="/static/js/move-top.js"></script>
+<script type="text/javascript" src="/static/js/jquery.easing.min.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+
+
+<!-- for bootstrap working -->
+<script type="text/javascript" src="/static/js/bootstrap.js"></script>
+</body>
+</html>

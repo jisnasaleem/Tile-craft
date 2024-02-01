@@ -1,0 +1,19 @@
+<html>
+<body>
+<center><table border="1">
+<tr>
+<th>category_id</th>
+<th>category_name</th>
+<th>category_description</th>
+</tr>
+{% for i in list %}
+<tr>
+<td>{{i.ccod}}</td>
+<td>{{i.cname}}</td>
+<td>{{i.cdesc}}</td>
+</tr>
+{% endfor %}
+
+</table></center>
+</body>
+</html>

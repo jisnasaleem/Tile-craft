@@ -1,0 +1,21 @@
+<html>
+<body>
+<center><table border="1">
+<tr>
+<!--<th>subcategory_id</th>-->
+<th>subcategory_name</th>
+<!--<th>category_id</th>-->
+<th>subcategory_description</th>
+</tr>
+{% for i in list %}
+<tr>
+<!--<td>{{i.scod}}</td>-->
+<td>{{i.sname}}</td>
+<!--<td>{{i.ccod}}</td>-->
+<td>{{i.sdesc}}</td>
+</tr>
+{% endfor %}
+
+</table></center>
+</body>
+</html>

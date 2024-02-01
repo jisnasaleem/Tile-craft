@@ -1,0 +1,27 @@
+<html>
+<body>
+<center><table border="1">
+<tr>
+<!--<th>Item_id</th>-->
+<th>Item_name</th>
+<!--<th>Brand_id</th>
+<th>Category_id</th>
+<th>Subcategory_id</th>-->
+<th>Item_description</th>
+<th>Amount</th>
+</tr>
+{% for i in list %}
+<tr>
+<!--<td>{{i.icode}}</td>-->
+<td>{{i.iname}}</td>
+<!--<td>{{i.bcode}}</td>
+<td>{{i.ccode}}</td>
+<td>{{i.scode}}</td>-->
+<td>{{i.descp}}</td>
+<td>{{i.amt}}</td>
+</tr>
+{% endfor %}
+
+</table></center>
+</body>
+</html>

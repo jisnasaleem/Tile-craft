@@ -1,0 +1,82 @@
+{% include 'staffhead.html' %}
+<br>
+<br>
+<div class="container-fluid">
+
+                       
+	 <div class="hero row align-items">
+            <div class="col-md-12">
+			
+				
+					
+						<h1><b>  Assigned Orders</b></h1>
+						<br>
+						<br>
+						
+						
+<table border="1" style="width:100%;text-align:center">
+	<tr style="background-color:black;color:white;height:50px">
+									
+									<th>Product Name</th>
+									<th>Quantity</th>
+									<th>Customer Name</th>
+									<th>Customer  No</th>
+									<th>Customer Address</th>
+								
+									<th>Action</th>
+								</tr>
+					
+							<tbody>
+							{% for i in order %}
+			 <form action="assignact.php">
+								<tr>
+									<!--<td><img alt="" src=" {{ MEDIA_URL }}{{i.book_image}}" width="50px" height="50px"></td>-->
+									<td> {{i.book_name}}</td>
+									<td> {{i.qty}}</td>
+									<td> {{i.cname}}</td>
+									<td> {{i.cphno}}</td>
+									<td> {{i.chouse}},{{i.ccity}},{{i.cdist}},{{i.cpin}}</td>
+								
+									{% ifequal i.ostatus "Assigned" %}
+									<td><a href="/status?s=Packed&oid={{i.oid}}">Proceed to Packing</a></td>
+									
+									{% endifequal %}
+									{% ifequal i.ostatus "Packed" %}
+									<td><a href="/status?s=Dispatched&oid={{i.oid}}">Proceed to Dispatch</a></td>
+										
+									{% endifequal %}
+									{% ifequal i.ostatus "Dispatched" %}
+								<td><a href="/status?s=Delivered&oid={{i.oid}}">Proceed to Deliver</a></td>
+										
+									{% endifequal %}
+									
+									{% ifequal i.ostatus "Delivered" %}
+							<td>Completed</td>
+										
+									{% endifequal %}
+									
+									
+		 </tr>	
+</form>		 
+		 {% endfor %}
+							</tbody>
+						</table>
+		
+			</div>
+</div>
+
+
+ <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        </div>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/lib/easing/easing.min.js"></script>
+        <script src="/static/lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="/static/lib/isotope/isotope.pkgd.min.js"></script>
+        <script src="/static/lib/lightbox/js/lightbox.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="/static/js/main.js"></script>
+    </body>

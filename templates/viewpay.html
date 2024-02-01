@@ -1,0 +1,25 @@
+<html>
+<body>
+<center><table border="1">
+<tr>
+<!--<th>Payment_id</th>-->
+<th>Card holder name:</th>
+<th>Card number:</th>
+<th>CVV:</th>
+<th>Expiry date:</th>
+<th>Amount:</th>
+</tr>
+{% for i in list %}
+<tr>
+<!--<td>{{i.payid}}</td>-->
+<td>{{i.chname}}</td>
+<td>{{i.cno}}</td>
+<td>{{i.cvv}}</td>
+<td>{{i.cdate}}</td>
+<td>{{i.amt}}</td>
+</tr>
+{% endfor %}
+
+</table></center>
+</body>
+</html>
